@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <Target Name="GenerateTemplates" 
+    BeforeTargets="CoreCompile;Compile;CompileDesignTime;ResolveAssemblyReferences;ResolveAssemblyReferencesDesignTime;ResolveProjectReferencesDesignTime;ResolveProjectReferences">
+    <ItemGroup>
+      <TemplateFiles Include="**/*.template"/>
+      <Compile Include="@(TemplateFiles->'$(IntermediateOutputPath)/%(RecursiveDir)%(Filename).cs')"/>
+    </ItemGroup>
+    <Copy SourceFiles="@(TemplateFiles)" DestinationFiles="@(TemplateFiles->'$(IntermediateOutputPath)/%(RecursiveDir)%(Filename).cs')"/>
+    
+  </Target>  
+
+</Project>

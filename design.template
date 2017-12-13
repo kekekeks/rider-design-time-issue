@@ -1,0 +1,9 @@
+﻿using System;
+
+namespace Sample
+{
+    class DesignGeneratedItem
+    {
+        public static string Text = "Hello world!";
+    }
+}
